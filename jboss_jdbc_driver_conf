@@ -1,0 +1,8 @@
+jboss/bin dizininde bulunan jboss-cli.sh uygulaması aşağıdaki komutla çalışıtırlır.(port değişiklik gösterebilir)
+#./jboss-cli.sh --connect --controller=yourjbossserverip:9999
+
+Aşağıda komut ile modül eklenir (jdbc driver'ın tmp dizinine koyulması yada bulunduğu dizinin komuta eklenmesi gerekli.)
+#module add --name=oracle.jdbc --resources=/tmp/ojdbc7.jar --dependencies=javax.api,javax.transaction.api' 
+
+Aşağıdaki komut ile datasource oluşturulur. Jboss consoldan eklenen datasoruce seçilebilir olmalı.
+#/subsystem = datasources/jdbc-driver=Oracle:add (driver-name="Oracle",driver-module-name="oracle.jdbc",driver-xa-datasource-class-name="oracle.jdbc.xa.client.OracleXADataSource")
